@@ -1,0 +1,123 @@
+---
+// Regalos.astro
+---
+
+<section class="relative w-full overflow-hidden" id="seccion-regalos">
+  <!-- Marco flores superior -->
+  <div class="w-full">
+    <img src="/imagenes/marcoflores.png" alt="" class="w-full h-auto block" />
+  </div>
+
+  <div class="relative z-10 -mt-10 sm:-mt-16 md:-mt-20 px-6 pb-0">
+    <div class="max-w-sm mx-auto text-center" id="contenedor-regalos">
+      <!-- Separador encima del título -->
+      <div class="flex justify-center mb-5">
+        <img
+          src="/imagenes/separador.png"
+          alt=""
+          class="w-40 sm:w-52 h-auto object-contain"
+        />
+      </div>
+
+      <!-- Título -->
+      <p
+        class="font-crimson text-2xl md:text-3xl font-bold uppercase mb-4"
+        style="color:#c4882a;"
+      >
+        Sugerencia de Regalos
+      </p>
+
+      <!-- Separador rombo -->
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div
+          class="h-px flex-1"
+          style="background:linear-gradient(to right, transparent, #c4882a);"
+        >
+        </div>
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="#c4882a"
+          ><polygon points="6,0 12,6 6,12 0,6"></polygon></svg
+        >
+        <div
+          class="h-px flex-1"
+          style="background:linear-gradient(to left, transparent, #c4882a);"
+        >
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <p
+        class="font-charm text-lg md:text-xl leading-relaxed mb-6"
+        style="color:#762609;"
+      >
+        El mejor regalo es tu presencia, pero si deseas tener un detalle
+        conmigo, puedes hacerlo mediante el código QR o en efectivo.
+      </p>
+
+      <!-- QR -->
+      <div id="tarjeta-qr">
+        <p
+          class="font-crimson text-base uppercase tracking-wider font-semibold mb-3"
+          style="color:#9a6f00;"
+        >
+          Transferencia QR
+        </p>
+        <div class="flex justify-center">
+          <div
+            class="w-52 h-52 rounded-2xl flex items-center justify-center border-2 shadow-md transform transition-transform duration-300 hover:scale-105"
+            style="background:rgba(255,255,255,0.6); border-color:rgba(196,136,42,0.3);"
+          >
+            <img
+              src="/imagenes/qr.png"
+              alt="Código QR"
+              class="w-full h-full object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Datos bancarios -->
+      <div class="mt-5 space-y-1" id="texto-inferior">
+        <p class="font-charm text-base md:text-lg" style="color:#762609;">
+          <span class="font-bold" style="color:#c4882a;"
+            >Nombre de la cuenta:</span
+          > Yannet Cala Quino
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marco flores inferior volteado -->
+  <div class="w-full -mt-10 sm:-mt-16 md:-mt-20">
+    <img
+      src="/imagenes/marcoflores.png"
+      alt=""
+      class="w-full h-auto block scale-y-[-1]"
+    />
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initRegalos = () => {
+    gsap.set("#contenedor-regalos", { opacity: 0, y: 30 });
+
+    ScrollTrigger.create({
+      trigger: "#seccion-regalos",
+      start: "top 85%",
+      onEnter: () =>
+        gsap.to("#contenedor-regalos", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+        }),
+      onLeaveBack: () => gsap.set("#contenedor-regalos", { opacity: 0, y: 30 }),
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", initRegalos);
+  document.addEventListener("astro:page-load", initRegalos);
+</script>

@@ -1,0 +1,315 @@
+---
+// Itinerario.astro - Quinceañera
+---
+
+<section class="relative overflow-hidden">
+
+  <!-- Marco flores superior -->
+  <div class="w-full">
+    <img src="/imagenes/marcoflores.png" alt="" class="w-full h-auto block" />
+  </div>
+
+  <div class="relative z-10 -mt-10 sm:-mt-16 md:-mt-20 px-4 pb-0">
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="max-w-3xl mx-auto relative">
+      <!-- TÍTULO -->
+      <div class="text-center mb-4 titulo-itinerario opacity-0">
+        <h2
+          class="font-crimson text-2xl md:text-3xl font-bold mb-2" style="color:#c4882a;"
+        >
+          ITINERARIO
+        </h2>
+        <div class="flex items-center justify-center gap-3">
+          <span class="block h-px w-16" style="background:linear-gradient(to right, transparent, #c4882a);"></span>
+          <span style="color:#c4882a;">✦</span>
+          <span class="block h-px w-16" style="background:linear-gradient(to left, transparent, #c4882a);"></span>
+        </div>
+      </div>
+
+      <div class="relative px-4 md:px-8">
+        <!-- FLORES LATERALES IZQUIERDA -->
+        <div
+          class="absolute -left-4 md:-left-8 lg:-left-12 top-1/2 -translate-y-1/2 w-10 md:w-24 lg:w-28 pointer-events-none z-0 flor-lateral-izq opacity-0"
+        >
+          <img
+            src="/imagenes/FlorLateral.webp"
+            alt=""
+            class="w-full h-auto object-contain"
+          />
+        </div>
+
+        <!-- FLORES LATERALES DERECHA -->
+        <div
+          class="absolute -right-4 md:-right-8 lg:-right-12 top-1/2 -translate-y-1/2 w-10 md:w-24 lg:w-28 pointer-events-none z-0 flor-lateral-der opacity-0"
+        >
+          <img
+            src="/imagenes/FlorLateral.webp"
+            alt=""
+            class="w-full h-auto object-contain scale-x-[-1]"
+          />
+        </div>
+
+        <!-- LÍNEA VERTICAL CENTRAL -->
+        <div
+          class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] rounded-full linea-central opacity-0"
+          style="background: linear-gradient(to bottom, transparent, #c4882a 8%, #c4882a 92%, transparent);"
+        >
+        </div>
+
+        <div class="space-y-0" id="eventos-container">
+          <!-- ── DOT ── -->
+          <div class="flex justify-center py-0.5">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#c4882a] to-[#9a6f00] flex items-center justify-center relative z-10 corazon-item shadow-sm opacity-0">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+
+          <!-- EVENTO 1: Recepción de invitados -->
+          <div class="evento-item grid grid-cols-2 gap-2 md:gap-6 py-0.5 opacity-0">
+            <div class="flex flex-col items-center justify-center px-2 imagen-izq">
+              <div class="w-10 h-10 md:w-12 md:h-12 transform transition-transform duration-300 hover:scale-110">
+                <img src="/imagenes/direccion.png" alt="Recepción" class="w-full h-full object-contain icono-lila" />
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center px-2 text-center texto-der">
+              <p class="font-crimson text-base md:text-lg font-bold leading-tight" style="color:#c4882a;">Recepción de invitados</p>
+              <p class="font-crimson text-sm md:text-base mt-0.5" style="color:#762609;">7:00 p.m.</p>
+            </div>
+          </div>
+
+          <!-- ── DOT ── -->
+          <div class="flex justify-center py-0.5">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#c4882a] to-[#9a6f00] flex items-center justify-center relative z-10 corazon-item shadow-sm opacity-0">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+
+          <!-- EVENTO 2: Acto central -->
+          <div class="evento-item grid grid-cols-2 gap-2 md:gap-6 py-0.5 opacity-0">
+            <div class="flex flex-col items-center justify-center px-2 text-center texto-izq">
+              <p class="font-crimson text-base md:text-lg font-bold leading-tight" style="color:#c4882a;">Acto central</p>
+              <p class="font-crimson text-sm md:text-base mt-0.5" style="color:#762609;">9:00 p.m.</p>
+            </div>
+            <div class="flex flex-col items-center justify-center px-2 imagen-der">
+              <div class="w-10 h-10 md:w-12 md:h-12 transform transition-transform duration-300 hover:scale-110">
+                <img src="/imagenes/vals.png" alt="Acto central" class="w-full h-full object-contain icono-lila" />
+              </div>
+            </div>
+          </div>
+
+          <!-- ── DOT ── -->
+          <div class="flex justify-center py-0.5">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#c4882a] to-[#9a6f00] flex items-center justify-center relative z-10 corazon-item shadow-sm opacity-0">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+
+          <!-- EVENTO 3: Cena -->
+          <div class="evento-item grid grid-cols-2 gap-2 md:gap-6 py-0.5 opacity-0">
+            <div class="flex flex-col items-center justify-center px-2 imagen-izq">
+              <div class="w-10 h-10 md:w-12 md:h-12 transform transition-transform duration-300 hover:scale-110">
+                <img src="/imagenes/cena.png" alt="Cena" class="w-full h-full object-contain icono-lila" />
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center px-2 text-center texto-der">
+              <p class="font-crimson text-base md:text-lg font-bold leading-tight" style="color:#c4882a;">Cena</p>
+              <p class="font-crimson text-sm md:text-base mt-0.5" style="color:#762609;">10:30 p.m.</p>
+            </div>
+          </div>
+
+          <!-- ── DOT ── -->
+          <div class="flex justify-center py-0.5">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#c4882a] to-[#9a6f00] flex items-center justify-center relative z-10 corazon-item shadow-sm opacity-0">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+
+          <!-- EVENTO 4: Torta -->
+          <div class="evento-item grid grid-cols-2 gap-2 md:gap-6 py-0.5 opacity-0">
+            <div class="flex flex-col items-center justify-center px-2 text-center texto-izq">
+              <p class="font-crimson text-base md:text-lg font-bold leading-tight" style="color:#c4882a;">Torta</p>
+              <p class="font-crimson text-sm md:text-base mt-0.5" style="color:#762609;">11:00 p.m.</p>
+            </div>
+            <div class="flex flex-col items-center justify-center px-2 imagen-der">
+              <div class="w-10 h-10 md:w-12 md:h-12 transform transition-transform duration-300 hover:scale-110">
+                <img src="/imagenes/torta.png" alt="Torta" class="w-full h-full object-contain icono-lila" />
+              </div>
+            </div>
+          </div>
+
+          <!-- ── DOT ── -->
+          <div class="flex justify-center py-0.5">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#c4882a] to-[#9a6f00] flex items-center justify-center relative z-10 corazon-item shadow-sm opacity-0">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+
+          <!-- EVENTO 5: Hora loca -->
+          <div class="evento-item grid grid-cols-2 gap-2 md:gap-6 py-0.5 opacity-0">
+            <div class="flex flex-col items-center justify-center px-2 imagen-izq">
+              <div class="w-10 h-10 md:w-12 md:h-12 transform transition-transform duration-300 hover:scale-110">
+                <img src="/imagenes/horaloca.png" alt="Hora loca" class="w-full h-full object-contain icono-lila" />
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center px-2 text-center texto-der">
+              <p class="font-crimson text-base md:text-lg font-bold leading-tight" style="color:#c4882a;">Hora loca</p>
+              <p class="font-crimson text-sm md:text-base mt-0.5" style="color:#762609;">12:00 a.m.</p>
+            </div>
+          </div>
+
+          <!-- ── DOT ── -->
+          <div class="flex justify-center py-0.5">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#c4882a] to-[#9a6f00] flex items-center justify-center relative z-10 corazon-item shadow-sm opacity-0">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+
+          <!-- EVENTO 6: Baile general -->
+          <div class="evento-item grid grid-cols-2 gap-2 md:gap-6 py-0.5 opacity-0">
+            <div class="flex flex-col items-center justify-center px-2 text-center texto-izq">
+              <p class="font-crimson text-base md:text-lg font-bold leading-tight" style="color:#c4882a;">Baile general</p>
+              <p class="font-crimson text-sm md:text-base mt-0.5" style="color:#762609;">12:00 a.m.</p>
+            </div>
+            <div class="flex flex-col items-center justify-center px-2 imagen-der">
+              <div class="w-10 h-10 md:w-12 md:h-12 transform transition-transform duration-300 hover:scale-110">
+                <img src="/imagenes/musica2.png" alt="Baile" class="w-full h-full object-contain icono-lila" />
+              </div>
+            </div>
+          </div>
+
+          <!-- ── DOT ── -->
+          <div class="flex justify-center py-0.5">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#c4882a] to-[#9a6f00] flex items-center justify-center relative z-10 corazon-item shadow-sm opacity-0">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+
+          <!-- EVENTO 7: Despedida -->
+          <div class="evento-item grid grid-cols-2 gap-2 md:gap-6 py-0.5 opacity-0">
+            <div class="flex flex-col items-center justify-center px-2 imagen-izq">
+              <div class="w-10 h-10 md:w-12 md:h-12 transform transition-transform duration-300 hover:scale-110">
+                <img src="/imagenes/fin-fiesta.png" alt="Despedida" class="w-full h-full object-contain icono-lila" />
+              </div>
+            </div>
+            <div class="flex flex-col items-center justify-center px-2 text-center texto-der">
+              <p class="font-crimson text-base md:text-lg font-bold leading-tight" style="color:#c4882a;">Despedida</p>
+              <p class="font-crimson text-sm md:text-base mt-0.5" style="color:#762609;">3:00 a.m.</p>
+            </div>
+          </div>
+
+          <!-- ── DOT FINAL ── -->
+          <div class="flex justify-center py-0.5">
+            <div class="w-5 h-5 rounded-full bg-gradient-to-br from-[#c4882a] to-[#9a6f00] flex items-center justify-center relative z-10 corazon-item shadow-sm opacity-0">
+              <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Marco flores inferior volteado -->
+  <div class="w-full -mt-10 sm:-mt-16 md:-mt-20">
+    <img src="/imagenes/marcoflores.png" alt="" class="w-full h-auto block scale-y-[-1]" />
+  </div>
+
+</section>
+
+<style>
+  .icono-lila {
+    filter: brightness(0) saturate(100%)
+      invert(62%) sepia(55%) saturate(600%)
+      hue-rotate(5deg) brightness(88%) contrast(95%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  .icono-lila:hover {
+    filter: brightness(0) saturate(100%)
+      invert(62%) sepia(55%) saturate(700%)
+      hue-rotate(5deg) brightness(95%) contrast(100%)
+      drop-shadow(0 4px 10px rgba(154,111,0,0.35));
+  }
+  .corazon-item {
+    filter: drop-shadow(0 2px 6px rgba(196,136,42,0.5));
+  }
+  .linea-central {
+    box-shadow: 0 0 8px rgba(196,136,42,0.25);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(
+    ".titulo-itinerario",
+    { opacity: 0, y: -20 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".titulo-itinerario",
+        start: "top 85%",
+        once: true,
+      },
+    },
+  );
+
+  const eventosContainer = document.getElementById("eventos-container");
+  if (eventosContainer) {
+    ScrollTrigger.create({
+      trigger: eventosContainer,
+      start: "top 80%",
+      toggleActions: "play none none none",
+      once: true,
+      onEnter: () => {
+        gsap.fromTo(
+          ".linea-central",
+          { opacity: 0, scaleY: 0 },
+          {
+            opacity: 1,
+            scaleY: 1,
+            duration: 1.5,
+            ease: "power2.out",
+            transformOrigin: "top center",
+          },
+        );
+
+        gsap.fromTo(
+          ".flor-lateral-izq",
+          { opacity: 0, x: -40 },
+          { opacity: 0.85, x: 0, duration: 1.2, ease: "power3.out" },
+        );
+
+        gsap.fromTo(
+          ".flor-lateral-der",
+          { opacity: 0, x: 40 },
+          { opacity: 0.85, x: 0, duration: 1.2, ease: "power3.out" },
+        );
+
+        gsap.fromTo(
+          ".corazon-item",
+          { opacity: 0, scale: 0 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "back.out(1.7)",
+            stagger: 0,
+          },
+        );
+
+        gsap.fromTo(
+          ".evento-item",
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", stagger: 0 },
+        );
+      },
+    });
+  }
+</script>

@@ -1,0 +1,101 @@
+---
+import Contador from './Contador.astro';
+---
+
+<section class="relative w-full px-0 pb-0" id="seccion-fecha">
+
+  <!-- Marco flores superior -->
+  <div class="w-full" id="marco-flores">
+    <img
+      src="/imagenes/marcoflores.png"
+      alt="Marco decorativo"
+      class="w-full h-auto block"
+    />
+  </div>
+
+  <!-- Contenido encima del marco (margin negativo lo sube) -->
+  <div class="relative z-10 -mt-10 sm:-mt-14 md:-mt-16 max-w-lg mx-auto text-center px-4 pb-2" id="contenido-fecha">
+
+    <!-- Mes -->
+    <p
+      class="font-crimson text-3xl sm:text-4xl font-bold tracking-wide mb-1"
+      style="color: #c4882a;"
+    >
+      Junio
+    </p>
+
+    <!-- Separador -->
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <div class="h-px w-16 sm:w-24" style="background: linear-gradient(to right, transparent, #c4882a);"></div>
+      <span class="text-base font-bold" style="color: #c4882a;">✦</span>
+      <div class="h-px w-16 sm:w-24" style="background: linear-gradient(to left, transparent, #c4882a);"></div>
+    </div>
+
+    <!-- Fila: SÁBADO — 06 — 2026 -->
+    <div class="flex items-center justify-center gap-6 sm:gap-10" id="fila-fecha">
+
+      <!-- SÁBADO -->
+      <div class="flex flex-col items-center min-w-[80px]">
+        <div class="w-full h-[1.5px] mb-1 rounded-full" style="background: #9a6f00;"></div>
+        <span class="font-crimson text-xl sm:text-2xl md:text-3xl font-bold uppercase" style="color: #9a6f00;">Sábado</span>
+        <div class="w-full h-[1.5px] mt-1 rounded-full" style="background: #9a6f00;"></div>
+      </div>
+
+      <!-- Día 06 -->
+      <span
+        class="font-crimson font-bold leading-none tabular-nums"
+        style="font-size: clamp(4.5rem, 16vw, 7rem); color: #c4882a; text-shadow: 0 2px 10px rgba(196,136,42,0.25);"
+      >06</span>
+
+      <!-- 2026 -->
+      <div class="flex flex-col items-center min-w-[80px]">
+        <div class="w-full h-[1.5px] mb-1 rounded-full" style="background: #9a6f00;"></div>
+        <span class="font-crimson text-xl sm:text-2xl md:text-3xl font-bold" style="color: #9a6f00;">2026</span>
+        <div class="w-full h-[1.5px] mt-1 rounded-full" style="background: #9a6f00;"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Contador embebido -->
+  <Contador />
+
+  <!-- Marco flores inferior (volteado) -->
+  <div class="w-full" id="marco-flores-abajo">
+    <img
+      src="/imagenes/marcoflores.png"
+      alt="Marco decorativo inferior"
+      class="w-full h-auto block scale-y-[-1]"
+    />
+  </div>
+
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.set("#marco-flores",       { opacity: 0, y: -20 });
+    gsap.set("#contenido-fecha",    { opacity: 0, y: 20  });
+    gsap.set("#marco-flores-abajo", { opacity: 0, y: 20  });
+
+    ScrollTrigger.create({
+      trigger: "#seccion-fecha",
+      start: "top 85%",
+      onEnter: () => {
+        gsap.to("#marco-flores",       { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" });
+        gsap.to("#contenido-fecha",    { opacity: 1, y: 0, duration: 0.9, ease: "power2.out", delay: 0.1 });
+        gsap.to("#marco-flores-abajo", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.2 });
+      },
+      onLeaveBack: () => {
+        gsap.to("#marco-flores",       { opacity: 0, y: -20, duration: 0.4 });
+        gsap.to("#contenido-fecha",    { opacity: 0, y: 20,  duration: 0.4 });
+        gsap.to("#marco-flores-abajo", { opacity: 0, y: 20,  duration: 0.4 });
+      },
+    });
+  });
+</script>

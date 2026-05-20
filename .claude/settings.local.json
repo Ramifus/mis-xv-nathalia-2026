@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\BRRRRRRR\\\\INVITACIONES WEB\\\\MODELOS DESPLEGADOS\\\\xv\\\\xv-bell-y best\" -Recurse -Force)",
+      "Bash(Select-Object FullName, Mode)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Format-Table -AutoSize)"
+    ]
+  }
+}

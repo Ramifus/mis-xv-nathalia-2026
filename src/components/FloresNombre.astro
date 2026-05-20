@@ -1,0 +1,122 @@
+---
+import ReproductorMusica from "./ReproductorMusica.astro";
+---
+
+<section class="relative w-full overflow-x-hidden" id="seccion-principal">
+    <!-- ══════════════════════════════════════════ -->
+    <!-- SILUETA — capa 0, detrás de todo -->
+    <!-- ══════════════════════════════════════════ -->
+    <div
+        class="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+        id="silueta-fondo"
+    >
+        <img
+            src="/imagenes/silueta.png"
+            alt=""
+            class="h-[80%] max-h-[620px] w-auto object-contain"
+            style="opacity: 0;"
+        />
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- ORNAMENTOS SUPERIORES — capa 20 -->
+    <!-- ══════════════════════════════════════════ -->
+    <div
+        class="absolute top-0 left-0 pointer-events-none z-20"
+        id="adorno-izq"
+        style="opacity: 0;"
+    >
+        <img
+            src="/imagenes/adornoizquierda.png"
+            alt=""
+            class="w-56 sm:w-72 md:w-80 lg:w-96 h-auto object-contain"
+        />
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- CONTENIDO PRINCIPAL — capa 10 -->
+    <!-- ══════════════════════════════════════════ -->
+    <div
+        class="relative z-10 flex flex-col items-center text-center px-4 pt-28 sm:pt-32 md:pt-40"
+    >
+        <!-- Nombre -->
+        <h1
+            id="nombre-xv"
+            class="font-great-vibes leading-none mb-1"
+            style="font-size: clamp(4.5rem, 16vw, 10rem); color: #c4882a; opacity: 0; text-shadow: 0 2px 10px rgba(196,136,42,0.3);"
+        >
+            Nathalia
+        </h1>
+
+        <!-- Mis XV años -->
+        <p
+            id="subtitulo-xv"
+            class="font-crimson text-2xl sm:text-2xl font-bold mb-4 uppercase"
+            style="color: #91660b; opacity: 0;"
+        >
+            Mis xv años
+        </p>
+
+        <!-- Invitación a reproducir -->
+        <p
+            id="texto-play"
+            class="font-charm text-base mb-10 leading-none"
+            style="color: #7a5500; opacity: 0;"
+        >
+            Presiona PLAY para reproducir mi canción
+        </p>
+
+        <!-- Reproductor embebido -->
+        <div class="w-full" id="wrapper-reproductor">
+            <ReproductorMusica />
+        </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════ -->
+    <!-- FLORES DE ABAJO -->
+    <!-- ══════════════════════════════════════════ -->
+    <div class="relative z-10 w-full -mt-8 sm:-mt-12" id="flores-abajo">
+        <img
+            src="/imagenes/floresaba.png"
+            alt="Flores decorativas"
+            class="w-full h-auto block"
+        />
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // ── Estado inicial ────────────────────────
+        gsap.set("#adorno-izq", { x: -50 });
+        gsap.set("#nombre-xv", { y: -30, scale: 0.9 });
+        gsap.set("#subtitulo-xv", { y: 20 });
+
+        // ── Todos los elementos entran al mismo tiempo ──
+        const tl = gsap.timeline({ delay: 0.2 });
+
+        tl.to(
+            ["#silueta-fondo img", "#adorno-izq", "#nombre-xv", "#subtitulo-xv", "#texto-play"],
+            { opacity: 1, duration: 1.2, ease: "power2.out" },
+            0,
+        )
+        .to("#adorno-izq",   { x: 0,        duration: 1.2, ease: "power2.out" }, 0)
+        .to("#nombre-xv",    { y: 0, scale: 1, duration: 1.2, ease: "back.out(1.2)" }, 0)
+        .to("#subtitulo-xv", { y: 0,        duration: 1.2, ease: "power2.out" }, 0);
+
+        // sobreescribir opacidad de silueta al valor correcto
+        gsap.to("#silueta-fondo img", { opacity: 0.38, duration: 1.2, ease: "power2.out", delay: 0.2 });
+
+        // ── Resplandor pulsante en el nombre ─────
+        gsap.to("#nombre-xv", {
+            textShadow:
+                "0 0 30px rgba(196, 136, 42, 0.45), 0 4px 14px rgba(196, 136, 42, 0.35)",
+            duration: 2.5,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+            delay: 2.5,
+        });
+    });
+</script>

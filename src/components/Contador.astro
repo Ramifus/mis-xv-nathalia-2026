@@ -1,0 +1,99 @@
+---
+// Contador.astro
+---
+
+<div class="w-full max-w-xs sm:max-w-sm mx-auto text-center px-5 py-5 my-4 rounded-2xl"
+     id="bloque-contador"
+     style="background: rgba(180,120,60,0.18); backdrop-filter: blur(6px);
+            border: 1px solid rgba(180,120,60,0.25); box-shadow: 0 4px 20px rgba(140,80,20,0.12);">
+
+  <!-- Título elegante -->
+  <div class="flex items-center justify-center gap-2 mb-4">
+    <div class="h-px w-8" style="background: #c4882a;"></div>
+    <p class="font-crimson text-lg font-bold uppercase tracking-[0.25em]" style="color: #9a6f00;">
+      Faltan
+    </p>
+    <div class="h-px w-8" style="background: #c4882a;"></div>
+  </div>
+
+  <!-- Números en fila -->
+  <div class="flex items-end justify-center gap-0">
+
+    <!-- DÍAS -->
+    <div class="flex flex-col items-center px-2 sm:px-3">
+      <span class="font-crimson font-bold leading-none tabular-nums"
+            style="font-size: clamp(2rem, 8vw, 3.2rem); color: #c4882a;" id="dias">00</span>
+      <span class="font-crimson text-[10px] sm:text-xs uppercase tracking-widest mt-1 font-semibold"
+            style="color: #9a6f00;">Días</span>
+    </div>
+
+    <span class="font-crimson font-bold mb-5 text-2xl sm:text-3xl" style="color: #c4882a;">:</span>
+
+    <!-- HORAS -->
+    <div class="flex flex-col items-center px-2 sm:px-3">
+      <span class="font-crimson font-bold leading-none tabular-nums"
+            style="font-size: clamp(2rem, 8vw, 3.2rem); color: #c4882a;" id="horas">00</span>
+      <span class="font-crimson text-[10px] sm:text-xs uppercase tracking-widest mt-1 font-semibold"
+            style="color: #9a6f00;">Horas</span>
+    </div>
+
+    <span class="font-crimson font-bold mb-5 text-2xl sm:text-3xl" style="color: #c4882a;">:</span>
+
+    <!-- MINUTOS -->
+    <div class="flex flex-col items-center px-2 sm:px-3">
+      <span class="font-crimson font-bold leading-none tabular-nums"
+            style="font-size: clamp(2rem, 8vw, 3.2rem); color: #c4882a;" id="minutos">00</span>
+      <span class="font-crimson text-[10px] sm:text-xs uppercase tracking-widest mt-1 font-semibold"
+            style="color: #9a6f00;">Min</span>
+    </div>
+
+    <span class="font-crimson font-bold mb-5 text-2xl sm:text-3xl" style="color: #c4882a;">:</span>
+
+    <!-- SEGUNDOS -->
+    <div class="flex flex-col items-center px-2 sm:px-3">
+      <span class="font-crimson font-bold leading-none tabular-nums"
+            style="font-size: clamp(2rem, 8vw, 3.2rem); color: #c4882a;" id="segundos">00</span>
+      <span class="font-crimson text-[10px] sm:text-xs uppercase tracking-widest mt-1 font-semibold"
+            style="color: #9a6f00;">Seg</span>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const fechaEvento = new Date("2026-06-06T19:00:00").getTime();
+
+  function actualizarContador() {
+    const diff = fechaEvento - Date.now();
+    const set  = (id: string, v: number) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = String(Math.max(0, v)).padStart(2, "0");
+    };
+    if (diff > 0) {
+      set("dias",     Math.floor(diff / 86400000));
+      set("horas",    Math.floor((diff % 86400000) / 3600000));
+      set("minutos",  Math.floor((diff % 3600000)  / 60000));
+      set("segundos", Math.floor((diff % 60000)    / 1000));
+    } else {
+      ["dias","horas","minutos","segundos"].forEach(id => set(id, 0));
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    actualizarContador();
+    setInterval(actualizarContador, 1000);
+
+    gsap.set("#bloque-contador", { opacity: 0, scale: 0.95, y: 15 });
+    ScrollTrigger.create({
+      trigger: "#bloque-contador",
+      start: "top 92%",
+      onEnter:     () => gsap.to("#bloque-contador", { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.4)" }),
+      onLeaveBack: () => gsap.to("#bloque-contador", { opacity: 0, scale: 0.95, y: 15, duration: 0.4 }),
+    });
+  });
+</script>

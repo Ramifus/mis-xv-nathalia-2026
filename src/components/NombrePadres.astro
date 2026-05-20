@@ -1,0 +1,98 @@
+<section class="py-2 px-4 relative" id="seccion-padres">
+  <div class="max-w-sm mx-auto text-center" id="contenido-padres">
+    <!-- Separador.png arriba -->
+    <div class="flex justify-center mb-4">
+      <img
+        src="/imagenes/separador.png"
+        alt="Separador decorativo"
+        class="w-40 sm:w-52 h-auto object-contain"
+      />
+    </div>
+
+    <!-- Título MIS PADRES -->
+    <p
+      class="font-crimson text-xl sm:text-2xl font-bold uppercase tracking-[0.2em] mb-4"
+      style="color: #c4882a;"
+    >
+      Mis Padres
+    </p>
+
+    <!-- Nombres padres -->
+    <div class="space-y-2 mb-5">
+      <p class="font-charm text-xl sm:text-2xl" style="color: #762609;">
+        Jhonny Rubén Velásquez Torrez
+      </p>
+      <p class="font-charm text-xl sm:text-2xl" style="color: #762609;">
+        Yannet Cala Quino
+      </p>
+    </div>
+
+    <!-- Separador medio -->
+    <div class="flex items-center justify-center gap-2 mb-5">
+      <div
+        class="h-px flex-1"
+        style="background: linear-gradient(to right, transparent, #c4882a);"
+      >
+      </div>
+      <svg width="10" height="10" viewBox="0 0 12 12" fill="#c4882a">
+        <polygon points="6,0 12,6 6,12 0,6"></polygon>
+      </svg>
+      <div
+        class="h-px flex-1"
+        style="background: linear-gradient(to left, transparent, #c4882a);"
+      >
+      </div>
+    </div>
+
+    <!-- Título MIS HERMANOS -->
+    <p
+      class="font-crimson text-xl sm:text-2xl font-bold uppercase tracking-[0.2em] mb-4"
+      style="color: #c4882a;"
+    >
+      Mis Hermanos
+    </p>
+
+    <!-- Nombres hermanos -->
+    <div class="space-y-2 mb-6">
+      <p class="font-charm text-xl sm:text-2xl" style="color: #762609;">
+        Génesis Velásquez Cala
+      </p>
+      <p class="font-charm text-xl sm:text-2xl" style="color: #762609;">
+        Nikol Velásquez Cala
+      </p>
+    </div>
+
+    <!-- Separador.png abajo -->
+    <div class="flex justify-center">
+      <img
+        src="/imagenes/separador.png"
+        alt="Separador decorativo"
+        class="w-40 sm:w-52 h-auto object-contain"
+      />
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.set("#contenido-padres", { opacity: 0, y: 30 });
+
+    ScrollTrigger.create({
+      trigger: "#seccion-padres",
+      start: "top 85%",
+      onEnter: () =>
+        gsap.to("#contenido-padres", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+        }),
+      onLeaveBack: () =>
+        gsap.to("#contenido-padres", { opacity: 0, y: 30, duration: 0.4 }),
+    });
+  });
+</script>

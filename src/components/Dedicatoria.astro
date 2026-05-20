@@ -1,0 +1,52 @@
+<!-- FlorSeparador encima -->
+<div class="flex justify-center w-full py-2">
+  <img src="/imagenes/FlorSeparador.webp" alt="" class="w-32 md:w-48 lg:w-56 h-auto object-contain" />
+</div>
+
+<section class="py-4 px-6 relative">
+  <div class="max-w-2xl mx-auto text-center">
+    <p
+      class="font-charm text-xl sm:text-2xl md:text-3xl leading-relaxed"
+      id="texto-ded"
+      style="color: #762609;"
+    >
+      Hay momentos en la vida que no solo marcan el tiempo, sino el alma. Hoy
+      comienza una nueva etapa, llena de sueños, aprendizajes y cambios. No se
+      trata solo de crecer, sino de descubrir quién soy, de brillar con mi
+      propia luz y de atesorar cada instante con el corazón.
+    </p>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.set("#texto-ded", { opacity: 0, y: 30 });
+
+    ScrollTrigger.create({
+      trigger: "#texto-ded",
+      start: "top 90%",
+      end: "top 20%",
+      onEnter: () => {
+        gsap.to("#texto-ded", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to("#texto-ded", {
+          opacity: 0,
+          y: 30,
+          duration: 0.4,
+          ease: "power2.in",
+        });
+      },
+    });
+  });
+</script>

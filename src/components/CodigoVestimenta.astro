@@ -1,0 +1,108 @@
+---
+// CodigoVestimenta.astro
+---
+
+<section class="py-6 px-4" id="seccion-vestimenta">
+  <div class="max-w-sm mx-auto text-center" id="contenido-vestimenta">
+    <!-- Separador superior -->
+    <div class="flex justify-center mb-5">
+      <img
+        src="/imagenes/Separador.png"
+        alt=""
+        class="w-40 sm:w-52 h-auto object-contain"
+      />
+    </div>
+
+    <!-- Título -->
+    <p
+      class="font-crimson text-2xl md:text-3xl uppercase font-bold mb-5"
+      style="color: #c4882a;"
+    >
+      Código de Vestimenta
+    </p>
+
+    <!-- Imagen vestimenta -->
+    <div class="flex justify-center mb-4">
+      <img
+        src="/imagenes/Vestimenta.png"
+        alt="Vestimenta"
+        class="w-24 sm:w-36 md:w-44 h-auto object-contain icono-dorado"
+      />
+    </div>
+
+    <!-- Formal -->
+    <p
+      class="font-crimson text-2xl sm:text-3xl font-bold mb-3"
+      style="color: #c4882a;"
+    >
+      Formal
+    </p>
+
+    <!-- Nota -->
+    <p
+      class="font-charm text-xl sm:text-lg leading-relaxed"
+      style="color: #762609;"
+    >
+      Color dorado y beige reservado para la quinceañera
+    </p>
+
+    <!-- Círculos de colores -->
+    <div class="flex items-center justify-center gap-6 mt-5 mb-2">
+
+      <!-- Dorado -->
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-md border-2 border-white/60"
+             style="background: linear-gradient(135deg, #d4a843, #9a6f00);"></div>
+        <span class="font-crimson text-xs font-semibold uppercase tracking-wide" style="color:#9a6f00;">Dorado</span>
+      </div>
+
+      <!-- Beige -->
+      <div class="flex flex-col items-center gap-2">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-md border-2 border-white/60"
+             style="background: linear-gradient(135deg, #f5e6c8, #d4b896);"></div>
+        <span class="font-crimson text-xs font-semibold uppercase tracking-wide" style="color:#9a6f00;">Beige</span>
+      </div>
+
+    </div>
+
+    <!-- Separador inferior -->
+    <div class="flex justify-center mt-4">
+      <img
+        src="/imagenes/Separador.png"
+        alt=""
+        class="w-40 sm:w-52 h-auto object-contain"
+      />
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.set("#contenido-vestimenta", { opacity: 0, y: 25 });
+
+    ScrollTrigger.create({
+      trigger: "#seccion-vestimenta",
+      start: "top 85%",
+      onEnter: () =>
+        gsap.to("#contenido-vestimenta", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+        }),
+      onLeaveBack: () =>
+        gsap.to("#contenido-vestimenta", { opacity: 0, y: 25, duration: 0.4 }),
+    });
+  });
+</script>
+
+<style>
+  .icono-dorado {
+    filter: brightness(0) saturate(100%) invert(62%) sepia(55%) saturate(600%)
+      hue-rotate(5deg) brightness(88%) contrast(95%);
+  }
+</style>

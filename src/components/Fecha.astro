@@ -1,0 +1,110 @@
+---
+import Contador from './Contador.astro';
+---
+
+<section class="relative w-full" id="seccion-fecha">
+
+  <!-- ── Marco superior ── -->
+  <div class="w-full" id="marco-top">
+    <img src="/imagenes/marcoflores.png" alt="" class="w-full h-auto block" />
+  </div>
+
+  <!-- ── Contenido sobre el marco ── -->
+  <div class="relative z-10 -mt-8 sm:-mt-12 md:-mt-16 pb-2" id="contenido-fecha">
+    <div class="max-w-sm mx-auto text-center px-6">
+
+      <!-- Etiqueta superior -->
+      <p class="font-crimson text-sm sm:text-base uppercase tracking-[0.3em] font-semibold mb-3"
+         style="color: #9a6f00;">
+        Te invito a celebrar
+      </p>
+
+      <!-- Línea decorativa con rombo -->
+      <div class="flex items-center justify-center gap-2 mb-4">
+        <div class="h-px flex-1" style="background: linear-gradient(to right, transparent, #c4882a);"></div>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="#c4882a">
+          <polygon points="6,0 12,6 6,12 0,6"/>
+        </svg>
+        <div class="h-px flex-1" style="background: linear-gradient(to left, transparent, #c4882a);"></div>
+      </div>
+
+      <!-- Fila: SÁBADO — 06 — JUNIO -->
+      <div class="flex items-center justify-center gap-4 sm:gap-6 mb-2">
+
+        <!-- SÁBADO -->
+        <div class="flex flex-col items-center min-w-[72px]">
+          <div class="w-full h-[1.5px] mb-1 rounded-full" style="background: #c4882a;"></div>
+          <span class="font-crimson text-xl sm:text-2xl font-bold uppercase tracking-wide"
+                style="color: #9a6f00;">Sábado</span>
+          <div class="w-full h-[1.5px] mt-1 rounded-full" style="background: #c4882a;"></div>
+        </div>
+
+        <!-- 06 centrado grande -->
+        <span class="font-crimson font-bold leading-none tabular-nums"
+              style="font-size: clamp(4.5rem, 18vw, 7.5rem); color: #c4882a;
+                     text-shadow: 0 4px 16px rgba(196,136,42,0.28);">06</span>
+
+        <!-- JUNIO -->
+        <div class="flex flex-col items-center min-w-[72px]">
+          <div class="w-full h-[1.5px] mb-1 rounded-full" style="background: #c4882a;"></div>
+          <span class="font-crimson text-xl sm:text-2xl font-bold uppercase tracking-wide"
+                style="color: #9a6f00;">Junio</span>
+          <div class="w-full h-[1.5px] mt-1 rounded-full" style="background: #c4882a;"></div>
+        </div>
+
+      </div>
+
+      <!-- 2026 centrado abajo -->
+      <p class="font-crimson text-3xl sm:text-4xl font-bold mb-3"
+         style="color: #c4882a;">
+        2026
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ── Contador ── -->
+  <Contador />
+
+  <!-- ── Marco inferior volteado + reloj encima ── -->
+  <div class="relative w-full" id="marco-bottom">
+    <img src="/imagenes/marcoflores.png" alt="" class="w-full h-auto block scale-y-[-1]" />
+    <!-- Reloj centrado dentro del marco -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <img
+        src="/imagenes/reloj.png"
+        alt="Reloj decorativo"
+        class="object-contain drop-shadow-md"
+        style="width: auto; height: 80%; max-height: 100%; opacity: 0.75;"
+      />
+    </div>
+  </div>
+
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.set("#marco-top",       { opacity: 0, y: -20 });
+    gsap.set("#contenido-fecha", { opacity: 0, y: 25  });
+    gsap.set("#marco-bottom",    { opacity: 0, y: 20  });
+
+    ScrollTrigger.create({
+      trigger: "#seccion-fecha",
+      start: "top 85%",
+      onEnter: () => {
+        gsap.to("#marco-top",       { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" });
+        gsap.to("#contenido-fecha", { opacity: 1, y: 0, duration: 1,   ease: "power2.out", delay: 0.1 });
+        gsap.to("#marco-bottom",    { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.2 });
+      },
+      onLeaveBack: () => {
+        gsap.to("#marco-top",       { opacity: 0, y: -20, duration: 0.4 });
+        gsap.to("#contenido-fecha", { opacity: 0, y: 25,  duration: 0.4 });
+        gsap.to("#marco-bottom",    { opacity: 0, y: 20,  duration: 0.4 });
+      },
+    });
+  });
+</script>

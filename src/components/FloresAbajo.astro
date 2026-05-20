@@ -1,0 +1,59 @@
+---
+// Final.astro
+---
+
+<section class="relative w-full overflow-hidden" id="seccion-final">
+
+  <!-- Silueta centrada al fondo -->
+  <div class="relative w-full flex justify-center" id="contenedor-final">
+
+    <!-- Silueta de fondo -->
+    <div class="absolute inset-0 flex items-end justify-center pointer-events-none z-0">
+      <img
+        src="/imagenes/silueta.png"
+        alt=""
+        class="h-full w-auto max-h-[500px] object-contain"
+        style="opacity: 1;"
+        id="silueta-final"
+      />
+    </div>
+
+    <!-- marcoflores al fondo abajo -->
+    <div class="absolute bottom-0 left-0 w-full z-10 pointer-events-none" id="marco-final">
+      <img
+        src="/imagenes/marcoflores.png"
+        alt=""
+        class="w-full h-auto block scale-y-[-1]"
+      />
+    </div>
+
+    <!-- Espacio para que la silueta tenga altura -->
+    <div class="h-64 sm:h-80 md:h-96 w-full"></div>
+
+  </div>
+
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.set("#silueta-final", { opacity: 0, y: 20 });
+    gsap.set("#marco-final",   { opacity: 0, y: 30 });
+
+    ScrollTrigger.create({
+      trigger: "#seccion-final",
+      start: "top 90%",
+      onEnter: () => {
+        gsap.to("#silueta-final", { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" });
+        gsap.to("#marco-final",   { opacity: 1,   y: 0, duration: 1,   ease: "power2.out", delay: 0.2 });
+      },
+      onLeaveBack: () => {
+        gsap.set("#silueta-final", { opacity: 0, y: 20 });
+        gsap.set("#marco-final",   { opacity: 0, y: 30 });
+      },
+    });
+  });
+</script>

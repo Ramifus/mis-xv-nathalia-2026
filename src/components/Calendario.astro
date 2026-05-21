@@ -2,9 +2,9 @@
 // Calendario.astro - CON CONFIGURACIÓN FÁCIL
 ---
 
-<!-- Separador floral superior -->
+<!-- Separador superior -->
 <div class="flex justify-center w-full py-2">
-  <img src="/imagenes/FlorSeparador.webp" alt="" class="w-32 md:w-48 lg:w-56 h-auto object-contain" />
+  <img src="/imagenes/separador.png" alt="" class="w-48 md:w-64 lg:w-80 h-auto object-contain" />
 </div>
 
 <section class="py-8 px-6 sm:px-8 md:px-12 lg:px-16">
@@ -17,7 +17,7 @@
         id="flores-cal-izq"
       >
         <img
-          src="/imagenes/FlorLateral.webp"
+          src="/imagenes/florlateral.png"
           alt="Flores"
           class="w-full h-auto object-contain scale-x-[-1]"
         />
@@ -29,46 +29,27 @@
         id="flores-cal-der"
       >
         <img
-          src="/imagenes/FlorLateral.webp"
+          src="/imagenes/florlateral.png"
           alt="Flores"
           class="w-full h-auto object-contain"
         />
       </div>
 
       <div
-        class="bg-white rounded-3xl shadow-lg border-2 border-[#c4882a] p-4 md:p-8 relative z-10"
+        class="bg-white/20 backdrop-blur-md rounded-3xl shadow-lg border border-[#c4882a]/50 p-4 md:p-8 relative z-10"
         id="calendario-card"
       >
-        <!-- MARIPOSAS + TÍTULO DEL MES -->
+        <!-- TÍTULO DEL MES -->
         <div
-          class="flex items-center justify-center gap-4 md:gap-6 mb-6"
+          class="flex items-center justify-center mb-6"
           id="titulo-mes-container"
         >
-          <!-- Mariposa izquierda -->
-          <div id="mariposa-cal-izq">
-            <img
-              src="/gif/MariposaRoja.gif"
-              alt="Mariposa"
-              class="w-10 h-10 md:w-14 md:h-14 object-contain scale-x-[-1]"
-            />
-          </div>
-
-          <!-- Título -->
           <h3
             class="font-charm text-2xl md:text-4xl text-[#c4882a] font-bold"
             id="nombre-mes"
           >
             <!-- Se llenará con JavaScript -->
           </h3>
-
-          <!-- Mariposa derecha -->
-          <div id="mariposa-cal-der">
-            <img
-              src="/gif/MariposaRoja.gif"
-              alt="Mariposa"
-              class="w-10 h-10 md:w-14 md:h-14 object-contain"
-            />
-          </div>
         </div>
 
         <!-- DÍAS DE LA SEMANA -->
@@ -200,16 +181,13 @@
       // Generar el calendario
       generarCalendario();
 
-      // 🎯 ESTADO INICIAL - FLORES EMPIEZAN MÁS ADENTRO PARA DESLIZARSE MÁS LEJOS
+      // ESTADO INICIAL
       gsap.set("#flores-cal-izq", { opacity: 0, x: 60 });
       gsap.set("#flores-cal-der", { opacity: 0, x: -60 });
       gsap.set("#calendario-card", { opacity: 0, scale: 0.95 });
-      gsap.set("#mariposa-cal-izq", { opacity: 0, x: -20 });
-      gsap.set("#mariposa-cal-der", { opacity: 0, x: 20 });
       gsap.set("#titulo-mes-container h3", { opacity: 0 });
       gsap.set(".dia-calendario", { opacity: 0 });
 
-      // ✨ ANIMACIÓN EN DOS FASES
       ScrollTrigger.create({
         trigger: "#calendario-card",
         start: "top 85%",
@@ -221,59 +199,23 @@
       function animarCalendario() {
         const tl = gsap.timeline();
 
-        // FASE 1: Calendario, mariposas, título y números aparecen JUNTOS Y RÁPIDO (0.6 seg)
         tl.to(
-          "#calendario-card, #mariposa-cal-izq, #mariposa-cal-der, #titulo-mes-container h3, .dia-calendario",
-          {
-            opacity: 1,
-            scale: 1,
-            x: 0,
-            duration: 0.6,
-            ease: "power2.out",
-          },
-        )
-
-          // FASE 2: Flores se deslizan MÁS LEJOS HACIA LOS BORDES (0.8 seg)
-          .to(
-            "#flores-cal-izq, #flores-cal-der",
-            {
-              opacity: 1,
-              x: 0,
-              duration: 0.8,
-              ease: "power2.out",
-            },
-            "-=0.2",
-          );
+          "#calendario-card, #titulo-mes-container h3, .dia-calendario",
+          { opacity: 1, scale: 1, x: 0, duration: 0.6, ease: "power2.out" },
+        ).to(
+          "#flores-cal-izq, #flores-cal-der",
+          { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+          "-=0.2",
+        );
       }
 
       function ocultarCalendario() {
         gsap.set("#flores-cal-izq", { opacity: 0, x: 60 });
         gsap.set("#flores-cal-der", { opacity: 0, x: -60 });
         gsap.set("#calendario-card", { opacity: 0, scale: 0.95 });
-        gsap.set("#mariposa-cal-izq", { opacity: 0, x: -20 });
-        gsap.set("#mariposa-cal-der", { opacity: 0, x: 20 });
         gsap.set("#titulo-mes-container h3", { opacity: 0 });
         gsap.set(".dia-calendario", { opacity: 0 });
       }
-
-      // 🦋 FLOTADO SUAVE DE MARIPOSAS
-      gsap.to("#mariposa-cal-izq", {
-        y: -8,
-        duration: 3,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: 1,
-      });
-
-      gsap.to("#mariposa-cal-der", {
-        y: -8,
-        duration: 3,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: 1.2,
-      });
 
       // ⭐ PULSO MUY SUAVE DEL DÍA ESPECIAL
       gsap.to("#dia-especial", {

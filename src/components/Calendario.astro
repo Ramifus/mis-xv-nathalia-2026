@@ -2,6 +2,11 @@
 // Calendario.astro - CON CONFIGURACIÓN FÁCIL
 ---
 
+<!-- Separador floral superior -->
+<div class="flex justify-center w-full py-2">
+  <img src="/imagenes/FlorSeparador.webp" alt="" class="w-32 md:w-48 lg:w-56 h-auto object-contain" />
+</div>
+
 <section class="py-8 px-6 sm:px-8 md:px-12 lg:px-16">
   <div class="max-w-3xl mx-auto relative">
     <!-- CONTENEDOR DEL CALENDARIO -->
@@ -31,7 +36,7 @@
       </div>
 
       <div
-        class="bg-white rounded-3xl shadow-lg border-2 border-[#5a1491] p-4 md:p-8 relative z-10"
+        class="bg-white rounded-3xl shadow-lg border-2 border-[#c4882a] p-4 md:p-8 relative z-10"
         id="calendario-card"
       >
         <!-- MARIPOSAS + TÍTULO DEL MES -->
@@ -50,7 +55,7 @@
 
           <!-- Título -->
           <h3
-            class="font-charm text-2xl md:text-4xl text-[#5a1491] font-bold"
+            class="font-charm text-2xl md:text-4xl text-[#c4882a] font-bold"
             id="nombre-mes"
           >
             <!-- Se llenará con JavaScript -->
@@ -69,37 +74,37 @@
         <!-- DÍAS DE LA SEMANA -->
         <div class="grid grid-cols-7 gap-1 md:gap-2 mb-3">
           <div
-            class="text-center font-charm text-sm md:text-base text-[#5a1491] font-bold"
+            class="text-center font-charm text-sm md:text-base text-[#9a6f00] font-bold"
           >
             D
           </div>
           <div
-            class="text-center font-charm text-sm md:text-base text-[#5a1491] font-bold"
+            class="text-center font-charm text-sm md:text-base text-[#9a6f00] font-bold"
           >
             L
           </div>
           <div
-            class="text-center font-charm text-sm md:text-base text-[#5a1491] font-bold"
+            class="text-center font-charm text-sm md:text-base text-[#9a6f00] font-bold"
           >
             M
           </div>
           <div
-            class="text-center font-charm text-sm md:text-base text-[#5a1491] font-bold"
+            class="text-center font-charm text-sm md:text-base text-[#9a6f00] font-bold"
           >
             M
           </div>
           <div
-            class="text-center font-charm text-sm md:text-base text-[#5a1491] font-bold"
+            class="text-center font-charm text-sm md:text-base text-[#9a6f00] font-bold"
           >
             J
           </div>
           <div
-            class="text-center font-charm text-sm md:text-base text-[#5a1491] font-bold"
+            class="text-center font-charm text-sm md:text-base text-[#9a6f00] font-bold"
           >
             V
           </div>
           <div
-            class="text-center font-charm text-sm md:text-base text-[#5a1491] font-bold"
+            class="text-center font-charm text-sm md:text-base text-[#9a6f00] font-bold"
           >
             S
           </div>
@@ -174,14 +179,14 @@
       if (dia === DIA_ESPECIAL) {
         // Día especial de la boda
         diaDiv.className =
-          "aspect-square flex items-center justify-center rounded-lg bg-gradient-to-br from-[#C3A1D9] to-[#5a1491] shadow-xl dia-calendario";
+          "aspect-square flex items-center justify-center rounded-lg bg-gradient-to-br from-[#f5d78e] to-[#c4882a] shadow-xl dia-calendario";
         diaDiv.id = "dia-especial";
         diaDiv.innerHTML = `<span class="font-charm text-2xl md:text-3xl text-white font-bold">${dia}</span>`;
       } else {
         // Días normales
         diaDiv.className =
-          "aspect-square flex items-center justify-center rounded-lg hover:bg-[#C3A1D9]/10 transition-all dia-calendario";
-        diaDiv.innerHTML = `<span class="font-charm text-base md:text-lg" style="color:#C4869A;">${dia}</span>`;
+          "aspect-square flex items-center justify-center rounded-lg hover:bg-[#c4882a]/10 transition-all dia-calendario";
+        diaDiv.innerHTML = `<span class="font-charm text-base md:text-lg" style="color:#9a6f00;">${dia}</span>`;
       }
 
       diasContainer.appendChild(diaDiv);
@@ -287,6 +292,6 @@
 
 <style>
   #dia-especial {
-    box-shadow: 0 6px 20px rgba(195, 161, 217, 0.5);
+    box-shadow: 0 6px 20px rgba(196, 136, 42, 0.45);
   }
 </style>
